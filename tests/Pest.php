@@ -11,6 +11,9 @@
 |
 */
 
+use App\Models\User;
+use Tests\TestHelper;
+
 uses(
     Tests\TestCase::class,
     Illuminate\Foundation\Testing\LazilyRefreshDatabase::class,
@@ -42,7 +45,12 @@ expect()->extend('toBeOne', function () {
 |
 */
 
-function something()
+function loginUser(): User
 {
-    // ..
+    return TestHelper::login(false);
+}
+
+function loginAdmin(): User
+{
+    return TestHelper::login(true);
 }

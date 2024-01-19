@@ -1,7 +1,7 @@
 <?php
 
 
-use App\Helpers\Calculator;
+use App\Http\Helpers\Calculator;
 
 test('add two numbers', function () {
     $calculator = new Calculator();
