@@ -4,12 +4,18 @@ namespace App\Services;
 
 use App\Models\Post;
 use App\Models\User;
+use Illuminate\Database\Eloquent\Builder;
 
 class PostService
 {
-    public function all(array $data)
+    public function all(User $user, array $data)
     {
-        return Post::query()->get();
+        return Post::query()
+            ->when($user, fn(Builder $query) => $query->where('user_id', $user->id))
+            ->when(isset($data['paginated']) && $data['paginated'] == true,
+                fn(Builder $query) => $query->paginate(),
+                fn(Builder $query) => $query->get()
+            );
     }
 
     public function create(User $user, array $postData)

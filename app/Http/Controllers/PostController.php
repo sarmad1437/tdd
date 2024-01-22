@@ -19,9 +19,7 @@ class PostController extends Controller
 
     public function index()
     {
-        $data = request()->all() + ['userId' => auth()->id()];
-
-        $posts = $this->postService->all($data);
+        $posts = $this->postService->all(auth()->user(),request()->all());
 
         return success(PostResource::collection($posts));
     }
