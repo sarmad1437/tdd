@@ -4,8 +4,8 @@
 - [ ] using pest instead of phpUnit
 - [ ] seed local database
 - [ ] blog test
+- [ ] refactor test
 - [ ] change database title
-
 
 - [ ] connect testing database and refresh database trait
 
@@ -13,7 +13,6 @@
 
 - [ ] write unit test for post model(return published posts only)
 - [ ] write unit test for admin seeder
-
 
 - [ ] only login user can create post
 - [ ] post validation test
