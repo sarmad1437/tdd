@@ -13,9 +13,9 @@ use Laravel\Sanctum\Sanctum;
 
 class TestHelper
 {
-    public static function login(bool $isAdmin): User
+    public static function login(User $user = null): User
     {
-        $user = User::factory()->create(['is_admin' => $isAdmin]);
+        $user = $user ?? User::factory()->create();
 
         Sanctum::actingAs($user);
 

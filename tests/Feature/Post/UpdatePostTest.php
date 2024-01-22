@@ -17,7 +17,7 @@ test('User has to fill required fields for update.', function () {
 
     $response = $this->putJson(route('posts.update', ['post' => $post->id]));
 
-    $response->assertUnprocessable()->assertInvalid(['name','slug','description']);
+    $response->assertUnprocessable()->assertInvalid(['title','slug','content']);
 });
 
 test('User can update Post', function () {
@@ -26,9 +26,9 @@ test('User can update Post', function () {
     $post = Post::factory()->for($user)->create();
 
     $data = [
-        'name' => 'test update',
+        'title' => 'test update',
         'slug' => $post->slug,
-        'description' => $post->description,
+        'content' => $post->content,
     ];
 
     $response = $this->putJson(route('posts.update', ['post' => $post->id]), $data);
@@ -36,9 +36,9 @@ test('User can update Post', function () {
     $response->assertJson(function (AssertableJson $json) use ($user, $data) {
         $json->where('message', 'Post updated successfully.')
             ->has('data', fn($json) => $json
-                ->where('name', $data['name'])
+                ->where('title', $data['title'])
                 ->where('slug', $data['slug'])
-                ->where('description', $data['description'])
+                ->where('content', $data['content'])
                 ->where('user_id', $user->id)
                 ->etc()
             );

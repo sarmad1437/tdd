@@ -42,7 +42,6 @@ test('user can login using correct credentials', function () {
         ->where('message', 'User login successfully')
         ->has('data.user', fn ($json) => $json
             ->where('email', $user->email)
-            ->where('is_admin',false)
             ->missing('password')
             ->etc()
         )

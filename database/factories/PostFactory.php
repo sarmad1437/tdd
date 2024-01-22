@@ -6,6 +6,7 @@ use App\Models\Post;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Str;
 
 class PostFactory extends Factory
 {
@@ -13,10 +14,12 @@ class PostFactory extends Factory
 
     public function definition(): array
     {
+        $title = $this->faker->name();
+
         return [
-            'name' => $this->faker->name(),
-            'description' => $this->faker->text(),
-            'slug' => $this->faker->slug(),
+            'title' => $title,
+            'content' => $this->faker->text(),
+            'slug' => Str::slug($title),
             'user_id' => User::factory()->create(),
             'status' => $this->faker->boolean(),
             'created_at' => Carbon::now(),

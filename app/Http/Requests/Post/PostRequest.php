@@ -12,10 +12,10 @@ class PostRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required', 'max:60'],
+            'title' => ['required', 'max:60'],
             'slug' => ['required', Rule::unique(Post::class, 'slug')->ignore($this->post)],
             'status' => ['boolean'],
-            'description' => ['required'],
+            'content' => ['required'],
         ];
     }
 }

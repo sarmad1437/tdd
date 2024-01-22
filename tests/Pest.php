@@ -45,12 +45,7 @@ expect()->extend('toBeOne', function () {
 |
 */
 
-function loginUser(): User
+function loginUser(User $user = null): User
 {
-    return TestHelper::login(false);
-}
-
-function loginAdmin(): User
-{
-    return TestHelper::login(true);
+    return TestHelper::login($user);
 }

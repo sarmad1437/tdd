@@ -12,7 +12,7 @@ test('User has to fill required fields for creating.', function () {
 
     $response = $this->postJson(route('posts.store'));
 
-    $response->assertUnprocessable()->assertInvalid(['name', 'slug', 'description']);
+    $response->assertUnprocessable()->assertInvalid(['title', 'slug', 'content']);
 });
 
 test('User can create new post', function () {
@@ -21,9 +21,9 @@ test('User can create new post', function () {
     $user = loginUser();
 
     $data = [
-        'name' => 'post 1',
+        'title' => 'post 1',
         'slug' => 'post-1',
-        'description' => 'description',
+        'content' => 'description',
     ];
 
     $response = $this->postJson(route('posts.store', $data));
@@ -33,9 +33,9 @@ test('User can create new post', function () {
     $response->assertJson(function (AssertableJson $json) use ($user, $data) {
         $json->where('message', 'Post added successfully.')
             ->has('data', fn ($json) => $json
-                ->where('name', $data['name'])
+                ->where('title', $data['title'])
                 ->where('slug', $data['slug'])
-                ->where('description', $data['description'])
+                ->where('content', $data['content'])
                 ->where('user_id', $user->id)
                 ->etc()
             );

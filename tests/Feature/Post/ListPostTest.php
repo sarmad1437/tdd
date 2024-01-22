@@ -20,7 +20,7 @@ test('User can view all own posts', function () {
             ->missingAll(['meta', 'links'])
             ->has('data.0', fn($json) => $json
                 ->where('id', $ownPost->id)
-                ->where('name', $ownPost->name)
+                ->where('title', $ownPost->title)
                 ->etc()
             );
     });
@@ -42,7 +42,7 @@ test('User can view all paginated posts', function () {
             ->has('data',1)
             ->has('data.0', fn($json) => $json
                 ->where('id', $ownPost->id)
-                ->where('name', $ownPost->name)
+                ->where('title', $ownPost->title)
                 ->etc()
             );
     });
