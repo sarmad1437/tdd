@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Post;
+use Database\Factories\PostFactory;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -20,5 +22,11 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         $this->call(AdminSeeder::class);
+
+        Post::factory()->published()->create([
+            'title' => 'test 1',
+        ]);
+
+        Post::factory()->unPublished()->create();
     }
 }

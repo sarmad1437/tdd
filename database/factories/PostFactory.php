@@ -26,4 +26,18 @@ class PostFactory extends Factory
             'updated_at' => Carbon::now(),
         ];
     }
+
+    public function published(): static
+    {
+        return $this->state(fn (array $attributes) => [
+            'status' => true,
+        ]);
+    }
+
+    public function unPublished(): static
+    {
+        return $this->state(fn (array $attributes) => [
+            'status' => false,
+        ]);
+    }
 }

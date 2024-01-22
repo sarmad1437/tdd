@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\RegisterController;
@@ -10,4 +11,8 @@ Route::post('register', RegisterController::class)->name('register');
 
 Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::apiResource('posts', PostController::class);
+});
+
+Route::group(['prefix' => 'blog', 'as' => 'blog.'], function () {
+    Route::get('posts',[BlogController::class,'index'])->name('posts');
 });

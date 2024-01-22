@@ -4,7 +4,9 @@ namespace App\Services;
 
 use App\DTO\Auth\LoginData;
 use App\DTO\Auth\RegisterData;
+use App\Events\UserRegisteredEvent;
 use App\Exceptions\LoginException;
+use App\Mail\RegisterMail;
 use App\Models\User;
 use Auth;
 
@@ -14,7 +16,13 @@ class AuthService
     {
         $registerData['password'] = bcrypt($registerData['password']);
 
-        return User::create($registerData);
+        $user = User::create($registerData);
+
+        \Mail::to($user->email)->send(new RegisterMail($user->name));
+
+        UserRegisteredEvent::dispatch($user);
+
+        return $user;
     }
 
     /**
