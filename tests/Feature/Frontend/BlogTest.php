@@ -15,6 +15,8 @@ test('show all published blog posts', function () {
 
     expect($response)->toHaveCount(1);
 
+    $response->assertJsonPath('data','12');
+
 
     expect($response[0]['title'])->toBe($post->title);
     expect($response[0]['content'])->toBe($post->content);*/
