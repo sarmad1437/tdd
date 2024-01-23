@@ -3,11 +3,6 @@
 use App\Models\Post;
 use Illuminate\Testing\Fluent\AssertableJson;
 
-beforeEach(function (){
-    //dd(Post::count());
-    $this->assertDatabaseCount(Post::class, 0);
-});
-
 test('Guest user can\'t view all posts', function () {
     $this->getJson(route('posts.index'))->assertUnauthorized();
 });

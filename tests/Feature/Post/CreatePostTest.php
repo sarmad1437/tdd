@@ -3,6 +3,10 @@
 use App\Models\Post;
 use Illuminate\Testing\Fluent\AssertableJson;
 
+beforeEach(function (){
+    $this->assertDatabaseCount(Post::class, 0);
+});
+
 test('Guest user can\'t create post', function () {
     $this->postJson(route('posts.store'))->assertUnauthorized();
 });
