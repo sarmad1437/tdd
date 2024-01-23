@@ -42,4 +42,18 @@ test('User can create new post', function () {
     });
 
     $this->assertDatabaseCount(Post::class, 1);
+
+    $post = Post::first();
+
+    expect($post->title)->toBe($data['title']);
+    expect($post->slug)->toBe($data['slug']);
+    expect($post->content)->toBe($data['content']);
+    expect($post->user_id)->toBe($user->id);
+
+    $this->assertDatabaseHas(Post::class, [
+        'title' => $data['title'],
+        'slug' => $data['slug'],
+        'content' => $data['content'],
+        'user_id' => $user->id,
+    ]);
 });

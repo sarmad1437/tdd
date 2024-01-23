@@ -4,7 +4,6 @@ use App\Events\UserRegisteredEvent;
 use App\Listeners\SendWelcomeMailListener;
 use App\Mail\RegisterMail;
 use App\Models\User;
-use Illuminate\Testing\Fluent\AssertableJson;
 
 test('user can register himself', function () {
     Mail::fake();
@@ -29,7 +28,6 @@ test('user can register himself', function () {
     expect($response['message'])->toBe('User register successfully');
     expect($response['data']['name'])->toBe($data['name']);
     expect($response['data']['email'])->toBe($data['email']);
-
 
     //$response->assertOk();
 
