@@ -1,11 +1,12 @@
 <?php
 
 
+use Illuminate\Http\UploadedFile;
+
 test('user can upload file', function () {
+    Storage::fake();
 
-    Storage::fake('public');
-
-    $file = \Illuminate\Http\UploadedFile::fake()->image('test.png');
+    $file = UploadedFile::fake()->image('test.png');
 
     $data = [
         'file' => $file
@@ -15,9 +16,9 @@ test('user can upload file', function () {
 
     $response->assertOk();
 
-    $response->assertJsonPath('data','uploads/test.png');
+    $path = $file->hashName();
 
-     expect($response[0]['title'])->toBe($post->title);
+    $response->assertJsonPath('data',$path);
 
-    Storage::assertExists($response->json('data'));
+    Storage::assertExists($path);
 });
