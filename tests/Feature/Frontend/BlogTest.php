@@ -5,7 +5,7 @@ use App\Models\Post;
 use Illuminate\Testing\Fluent\AssertableJson;
 
 test('show all published blog posts', function () {
-    /*$response = $this->getJson(route('blog.posts'));
+    $response = $this->getJson(route('blog.posts'));
 
     $response->assertStatus(200);
 
@@ -13,7 +13,7 @@ test('show all published blog posts', function () {
 
     expect($response)->toHaveCount(1);
 
-    expect($response[0]['title'])->toBe('test 1');*/
+    expect($response[0]['title'])->toBe('test 1');
 
 
     /*$post = \App\Models\Post::factory()->create(['status' => true]);

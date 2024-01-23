@@ -2,9 +2,6 @@
 
 namespace Tests;
 
-use App\Enums\RoleEnum;
-use App\Models\Permission;
-use App\Models\Role;
 use App\Models\User;
 use Illuminate\Support\Arr;
 use Illuminate\Testing\Fluent\AssertableJson;

@@ -45,6 +45,12 @@ test('User can create new post', function () {
             );
     });
 
+    $response->assertResponse(
+        ['title','slug','content','user_id'],
+        $data + ['user_id' => $user->id],
+        'Post added successfully.'
+    );
+
     $this->assertDatabaseCount(Post::class, 1);
 
     $post = Post::first();
