@@ -9,6 +9,7 @@ use App\Exceptions\LoginException;
 use App\Mail\RegisterMail;
 use App\Models\User;
 use Auth;
+use Mail;
 
 class AuthService
 {
@@ -18,7 +19,7 @@ class AuthService
 
         $user = User::create($registerData);
 
-        \Mail::to($user->email)->send(new RegisterMail($user->name));
+        Mail::to($user->email)->send(new RegisterMail($user->name));
 
         UserRegisteredEvent::dispatch($user);
 
