@@ -10,9 +10,7 @@ class PostService
 {
     public function all(User $user, array $data)
     {
-        return Post::query()
-            ->when($user, fn(Builder $query) => $query->where('user_id', $user->id))
-            ->when(isset($data['paginated']) && $data['paginated'] == true,
+        return $user->posts()->when(isset($data['paginated']) && $data['paginated'] == true,
                 fn(Builder $query) => $query->paginate(),
                 fn(Builder $query) => $query->get()
             );
