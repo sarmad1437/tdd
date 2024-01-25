@@ -14,34 +14,34 @@ class PostController extends Controller
     public function __construct(PostService $postService)
     {
         $this->postService = $postService;
-        $this->authorizeResource(Post::class);
+        //$this->authorizeResource(Post::class);
     }
 
     public function index()
     {
-        $posts = $this->postService->all(auth()->user(),request()->all());
+        /*$posts = $this->postService->all(auth()->user(),request()->all());
 
-        return success(PostResource::collection($posts));
+        return success(PostResource::collection($posts));*/
     }
 
     public function store(PostRequest $postRequest)
     {
-        $post = $this->postService->create(auth()->user(), $postRequest->validated());
+        /*$post = $this->postService->create(auth()->user(), $postRequest->validated());
 
-        return success(new PostResource($post), 'Post added successfully.');
+        return success(new PostResource($post), 'Post added successfully.');*/
     }
 
     public function update(PostRequest $postRequest, Post $post)
     {
-        $this->postService->update($post, $postRequest->validated());
+        /*$this->postService->update($post, $postRequest->validated());
 
-        return success(new PostResource($post), 'Post updated successfully.');
+        return success(new PostResource($post), 'Post updated successfully.');*/
     }
 
     public function destroy(Post $post)
     {
-        $this->postService->delete($post);
+        /*$this->postService->delete($post);
 
-        return success();
+        return success();*/
     }
 }

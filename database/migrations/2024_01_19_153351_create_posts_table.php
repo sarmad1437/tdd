@@ -10,11 +10,11 @@ return new class extends Migration {
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
+            /*$table->string('title');
             $table->text('content');
             $table->string('slug')->unique();
             $table->foreignIdFor(User::class);
-            $table->boolean('status')->default(false);
+            $table->boolean('status')->default(false);*/
             $table->timestamps();
         });
     }

@@ -21,7 +21,7 @@ class EventServiceProvider extends ServiceProvider
             SendEmailVerificationNotification::class,
         ],
         UserRegisteredEvent::class => [
-            SendWelcomeMailListener::class,
+            //SendWelcomeMailListener::class,
         ],
     ];
 

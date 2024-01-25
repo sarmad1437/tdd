@@ -16,7 +16,7 @@ use Tests\TestHelper;
 
 uses(
     Tests\TestCase::class,
-    Illuminate\Foundation\Testing\LazilyRefreshDatabase::class,
+    //Illuminate\Foundation\Testing\LazilyRefreshDatabase::class,
 )->in('./');
 
 /*
@@ -30,9 +30,6 @@ uses(
 |
 */
 
-expect()->extend('toBeOne', function () {
-    return $this->toBe(1);
-});
 
 /*
 |--------------------------------------------------------------------------

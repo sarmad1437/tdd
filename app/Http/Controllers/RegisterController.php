@@ -18,10 +18,10 @@ class RegisterController extends Controller
 
     public function __invoke(RegisterRequest $registerData)
     {
-        $user = $this->authService->register($registerData->validated());
+       /* $user = $this->authService->register($registerData->validated());
 
         $user = UserResource::make($user);
 
-        return success($user, 'User register successfully');
+        return success($user, 'User register successfully');*/
     }
 }

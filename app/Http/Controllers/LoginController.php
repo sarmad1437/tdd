@@ -22,12 +22,12 @@ class LoginController extends Controller
      */
     public function __invoke(LoginRequest $request)
     {
-        [$token, $user] = $this->authService->login($request->validated());
+        /*[$token, $user] = $this->authService->login($request->validated());
 
         return success([
             'token' => $token,
             'user' => new UserResource($user),
-        ], 'User login successfully');
+        ], 'User login successfully');*/
 
     }
 }

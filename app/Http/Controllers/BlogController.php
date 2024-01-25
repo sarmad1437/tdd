@@ -9,10 +9,10 @@ class BlogController extends Controller
 {
     public function index()
     {
-        $posts = Post::published()->get();
+        //$posts = Post::published()->get();
 
         /*$posts = collect();*/
 
-        return success(PostResource::collection($posts));
+        //return success(PostResource::collection($posts));
     }
 }

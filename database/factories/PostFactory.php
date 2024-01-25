@@ -14,7 +14,7 @@ class PostFactory extends Factory
 
     public function definition(): array
     {
-        $title = $this->faker->name();
+        /*$title = $this->faker->name();
 
         return [
             'title' => $title,
@@ -24,10 +24,10 @@ class PostFactory extends Factory
             'status' => $this->faker->boolean(),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
-        ];
+        ];*/
     }
 
-    public function published(): static
+    /*public function published(): static
     {
         return $this->state(fn (array $attributes) => [
             'status' => true,
@@ -39,5 +39,5 @@ class PostFactory extends Factory
         return $this->state(fn (array $attributes) => [
             'status' => false,
         ]);
-    }
+    }*/
 }

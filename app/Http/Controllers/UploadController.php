@@ -9,8 +9,8 @@ class UploadController extends Controller
 {
     public function __invoke(Request $request)
     {
-        $path = $request->file('file')->store();
+        /*$path = $request->file('file')->store();
 
-        return success($path);
+        return success($path);*/
     }
 }
